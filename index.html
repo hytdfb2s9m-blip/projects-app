@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#0B5CFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="مشاريعي">
+<link rel="manifest" href="manifest.json">
+<title>مشاريعي</title>
+<style>
+:root{--blue:#0b5cff;--blue2:#3b82f6;--green:#16a34a;--red:#ef4444;--ink:#111827;--muted:#718096;--bg:#f5f7fb;--card:#fff;--line:#e8edf4}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",sans-serif}
+button,input,select{font:inherit}
+.app{max-width:520px;margin:auto;min-height:100vh;padding-bottom:92px}
+.top{padding:calc(env(safe-area-inset-top) + 18px) 18px 18px;background:linear-gradient(145deg,#0b5cff,#0843c7);color:#fff;border-radius:0 0 28px 28px}
+.topline{display:flex;align-items:center;justify-content:space-between}.title{font-size:29px;font-weight:850;letter-spacing:-.5px}.sub{font-size:13px;opacity:.84;margin-top:4px}
+.iconbtn{width:42px;height:42px;border:0;border-radius:14px;background:#ffffff1c;color:#fff;font-size:21px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:18px}.stat{background:#ffffff18;border:1px solid #ffffff22;border-radius:16px;padding:10px 5px;text-align:center}.stat b{display:block;font-size:21px}.stat span{font-size:11px;opacity:.86}
+.content{padding:14px 14px 0}.search{display:flex;gap:8px;background:#fff;border:1px solid var(--line);border-radius:15px;padding:5px 7px;box-shadow:0 4px 16px #14213d08}.search input{border:0;outline:0;background:transparent;width:100%;padding:8px}.filterbtn{border:0;background:#eef4ff;color:var(--blue);border-radius:11px;padding:0 12px;font-weight:800}
+.tabs{display:flex;gap:7px;overflow:auto;margin:12px 0 2px;padding-bottom:2px}.tabs button{white-space:nowrap;border:0;background:#fff;color:#64748b;border-radius:12px;padding:9px 13px;font-weight:750}.tabs button.active{background:#0b5cff;color:#fff}
+.section{margin:18px 2px 9px;font-size:16px;font-weight:850}.section span{color:#94a3b8;font-size:12px;margin-right:5px}
+.card{background:#fff;border:1px solid var(--line);border-radius:19px;padding:15px;margin-bottom:10px;box-shadow:0 5px 18px #14213d09}.head{display:flex;justify-content:space-between;gap:10px}.name{font-size:16px;font-weight:850}.date{color:var(--muted);font-size:12px;margin-top:5px}.badge{font-size:11px;font-weight:850;padding:6px 9px;border-radius:20px;height:max-content}.paid .badge{background:#dcfce7;color:#15803d}.unpaid .badge{background:#fee2e2;color:#b91c1c}.actions{display:flex;gap:8px;margin-top:13px}.actions button{border:0;border-radius:11px;padding:8px 12px;background:#f1f5f9;color:#334155;font-size:12px;font-weight:800}.actions .pay{background:#e8f7ee;color:#15803d}.actions .delete{color:#dc2626}
+.empty{text-align:center;padding:38px 15px;color:#94a3b8}.empty .emoji{font-size:42px;margin-bottom:8px}
+.fab{position:fixed;bottom:calc(75px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:calc(min(520px,100vw) - 30px);height:50px;border:0;border-radius:17px;background:#0b5cff;color:#fff;font-weight:850;font-size:16px;box-shadow:0 10px 25px #0b5cff45;z-index:4}
+.nav{position:fixed;bottom:0;left:0;right:0;height:68px;padding-bottom:env(safe-area-inset-bottom);background:#fffffff2;backdrop-filter:blur(18px);border-top:1px solid #e7ebf0;display:flex;justify-content:center;z-index:3}.navinner{width:min(520px,100%);display:flex;justify-content:space-around}.nav button{flex:1;border:0;background:transparent;color:#8a96a8;font-size:11px;font-weight:800}.nav button.active{color:#0b5cff}.nav i{display:block;font-style:normal;font-size:21px;margin-bottom:2px}
+.sheet{position:fixed;inset:0;background:#0007;display:none;align-items:flex-end;z-index:10}.sheet.show{display:flex}.panel{width:min(520px,100%);margin:auto;background:#fff;border-radius:25px 25px 0 0;padding:18px 16px calc(18px + env(safe-area-inset-bottom));max-height:90vh;overflow:auto}.grab{width:42px;height:5px;background:#d7dde6;border-radius:5px;margin:0 auto 15px}.panel h2{margin:0 0 15px;font-size:21px}.field{margin-bottom:12px}.field label{display:block;font-size:12px;font-weight:800;color:#64748b;margin-bottom:6px}.field input,.field select{width:100%;padding:13px;border:1px solid #dce3ec;border-radius:13px;background:#fff;outline:0}.save{width:100%;border:0;border-radius:14px;padding:14px;background:#0b5cff;color:#fff;font-weight:850;margin-top:3px}.cancel{width:100%;border:0;background:#f1f5f9;border-radius:14px;padding:12px;margin-top:8px;color:#475569;font-weight:800}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="topline"><div><div class="title">مشاريعي</div><div class="sub">كل مشاريعك في مكان واحد</div></div><button class="iconbtn" onclick="openForm()">＋</button></div>
+  <div class="stats"><div class="stat"><b id="total">0</b><span>كل المشاريع</span></div><div class="stat"><b id="paid">0</b><span>مدفوع</span></div><div class="stat"><b id="unpaid">0</b><span>لم يدفع</span></div></div>
+</header>
+<main class="content">
+  <div class="search"><span style="padding:8px 4px">⌕</span><input id="q" placeholder="ابحث عن مشروع..." oninput="render()"><button class="filterbtn" onclick="cycleFilter()" id="filterBtn">الكل</button></div>
+  <div class="tabs">
+    <button class="active" data-f="all" onclick="setFilter('all')">الكل</button>
+    <button data-f="future" onclick="setFilter('future')">القادمة</button>
+    <button data-f="past" onclick="setFilter('past')">السابقة</button>
+    <button data-f="unpaid" onclick="setFilter('unpaid')">لم يدفع</button>
+    <button data-f="paid" onclick="setFilter('paid')">مدفوع</button>
+  </div>
+  <div id="list"></div>
+</main>
+<button class="fab" onclick="openForm()">＋ إضافة مشروع جديد</button>
+<nav class="nav"><div class="navinner"><button class="active" onclick="setFilter('all')"><i>⌂</i>المشاريع</button><button onclick="setFilter('future')"><i>◷</i>القادمة</button><button onclick="setFilter('unpaid')"><i>✓</i>الدفعات</button></div></nav>
+</div>
+
+<div class="sheet" id="sheet" onclick="if(event.target===this)closeForm()">
+ <div class="panel"><div class="grab"></div><h2 id="formTitle">إضافة مشروع</h2>
+  <div class="field"><label>اسم المشروع</label><input id="name" placeholder="مثال: فعالية جدة 2026"></div>
+  <div class="field"><label>تاريخ المشروع</label><input id="date" type="date"></div>
+  <div class="field"><label>حالة الدفع</label><select id="status"><option value="unpaid">لم يدفع 🔴</option><option value="paid">دفع 🟢</option></select></div>
+  <button class="save" onclick="saveProject()">حفظ المشروع</button><button class="cancel" onclick="closeForm()">إلغاء</button>
+ </div>
+</div>
+
+<script>
+const KEY="projects_ios_v2";let projects=JSON.parse(localStorage.getItem(KEY)||"[]"),filter="all",editing=null;
+const $=x=>document.getElementById(x);
+function today(){let d=new Date();return new Date(d.getFullYear(),d.getMonth(),d.getDate())}
+function fmt(s){let [y,m,d]=s.split("-");return `${d}/${m}/${y}`}
+function save(){localStorage.setItem(KEY,JSON.stringify(projects))}
+function setFilter(f){filter=f;document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("active",b.dataset.f===f));render()}
+function cycleFilter(){const a=["all","future","past","unpaid","paid"],i=a.indexOf(filter);setFilter(a[(i+1)%a.length])}
+function openForm(id=null){editing=id;const p=id?projects.find(x=>x.id===id):null;$("formTitle").textContent=p?"تعديل المشروع":"إضافة مشروع";$("name").value=p?p.name:"";$("date").value=p?p.date:"";$("status").value=p?p.status:"unpaid";$("sheet").classList.add("show");setTimeout(()=>$("name").focus(),150)}
+function closeForm(){$("sheet").classList.remove("show");editing=null}
+function saveProject(){let name=$("name").value.trim(),date=$("date").value,status=$("status").value;if(!name||!date){alert("أدخل اسم المشروع والتاريخ");return}if(editing){let p=projects.find(x=>x.id===editing);Object.assign(p,{name,date,status})}else projects.push({id:Date.now(),name,date,status});save();closeForm();render()}
+function del(id){if(confirm("هل تريد حذف المشروع؟")){projects=projects.filter(x=>x.id!==id);save();render()}}
+function toggle(id){let p=projects.find(x=>x.id===id);p.status=p.status==="paid"?"unpaid":"paid";save();render()}
+function esc(s){return s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function card(p){let paid=p.status==="paid";return `<article class="card ${paid?"paid":"unpaid"}"><div class="head"><div><div class="name">${esc(p.name)}</div><div class="date">📅 ${fmt(p.date)}</div></div><span class="badge">${paid?"دفع 🟢":"لم يدفع 🔴"}</span></div><div class="actions"><button class="pay" onclick="toggle(${p.id})">${paid?"إلغاء الدفع":"تسجيل كمدفوع"}</button><button onclick="openForm(${p.id})">تعديل</button><button class="delete" onclick="del(${p.id})">حذف</button></div></article>`}
+function render(){let q=$("q").value.trim().toLowerCase(),t=today();$("total").textContent=projects.length;$("paid").textContent=projects.filter(p=>p.status==="paid").length;$("unpaid").textContent=projects.filter(p=>p.status==="unpaid").length;$("filterBtn").textContent={all:"الكل",future:"القادمة",past:"السابقة",paid:"مدفوع",unpaid:"لم يدفع"}[filter];
+let arr=projects.filter(p=>{let d=new Date(p.date+"T00:00:00"),past=d<t;return (!q||p.name.toLowerCase().includes(q))&&(filter==="all"||(filter==="future"&&!past)||(filter==="past"&&past)||filter===p.status)}).sort((a,b)=>a.date.localeCompare(b.date));
+if(!arr.length){$("list").innerHTML='<div class="empty"><div class="emoji">📂</div>لا توجد مشاريع هنا<br><small>اضغط «إضافة مشروع جديد» للبدء</small></div>';return}
+let future=arr.filter(p=>new Date(p.date+"T00:00:00")>=t),past=arr.filter(p=>new Date(p.date+"T00:00:00")<t),html="";
+if(future.length){html+=`<div class="section">📅 المشاريع القادمة <span>${future.length}</span></div>`+future.map(card).join("")}
+if(past.length){html+=`<div class="section">🗂️ المشاريع السابقة <span>${past.length}</span></div>`+past.map(card).join("")}
+$("list").innerHTML=html}
+render();
+</script>
+</body>
+</html>
