@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#0b5cff">
+<meta name="theme-color" content="#4f46e5">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="مشاريعي">
@@ -11,17 +11,25 @@
 <title>مشاريعي</title>
 <style>
 :root {
-  --blue: #0b5cff;
-  --blue-gradient: linear-gradient(135deg, #0b5cff, #0043ce);
-  --bg: #f2f4f8;
+  /* ألوان مميزة وعصرية */
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --gradient-main: linear-gradient(135deg, #6366f1 0%, #4338ca 100%);
+  --gradient-accent: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+  --bg: #f8fafc;
   --card: #ffffff;
   --ink: #0f172a;
   --muted: #64748b;
   --line: #e2e8f0;
+  
+  /* ألوان الحالات */
   --green: #10b981;
   --green-bg: #ecfdf5;
-  --red: #ef4444;
-  --red-bg: #fef2f2;
+  --green-border: #a7f3d0;
+  --red: #f43f5e;
+  --red-bg: #fff1f2;
+  --red-border: #fecdd3;
+  
   --radius: 20px;
 }
 
@@ -43,11 +51,11 @@ body {
 
 /* Header */
 .top {
-  padding: calc(env(safe-area-inset-top) + 20px) 20px 24px;
-  background: var(--blue-gradient);
+  padding: calc(env(safe-area-inset-top) + 20px) 20px 26px;
+  background: var(--gradient-main);
   color: #fff;
   border-radius: 0 0 32px 32px;
-  box-shadow: 0 10px 30px rgba(11, 92, 255, 0.2);
+  box-shadow: 0 12px 32px rgba(99, 102, 241, 0.25);
 }
 .topline { display: flex; align-items: center; justify-content: space-between; }
 .title { font-size: 28px; font-weight: 800; letter-spacing: -0.5px; }
@@ -67,53 +75,56 @@ body {
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 20px; }
 .stat {
   background: rgba(255,255,255,0.12);
-  border: 1px solid rgba(255,255,255,0.18);
+  border: 1px solid rgba(255,255,255,0.2);
   border-radius: 16px; padding: 12px 8px; text-align: center;
   backdrop-filter: blur(8px);
 }
 .stat b { display: block; font-size: 20px; font-weight: 800; }
 .stat span { font-size: 11px; opacity: 0.85; }
 
-.progress-bar-bg { height: 6px; background: rgba(255,255,255,0.2); border-radius: 10px; margin-top: 16px; overflow: hidden; }
-.progress-bar-fill { height: 100%; background: #fff; width: 0%; transition: width 0.4s ease; }
+.progress-bar-bg { height: 7px; background: rgba(255,255,255,0.2); border-radius: 10px; margin-top: 18px; overflow: hidden; }
+.progress-bar-fill { height: 100%; background: #34d399; width: 0%; transition: width 0.4s ease; box-shadow: 0 0 12px #34d399; }
 
 /* Main Section */
-.content { padding: 16px 16px 0; }
+.content { padding: 18px 16px 0; }
 
 .search {
   display: flex; align-items: center; gap: 10px;
   background: var(--card); border: 1px solid var(--line);
-  border-radius: 16px; padding: 6px 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  border-radius: 16px; padding: 6px 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
 }
-.search input { border: 0; outline: 0; background: transparent; width: 100%; padding: 8px 0; font-size: 15px; }
+.search input { border: 0; outline: 0; background: transparent; width: 100%; padding: 8px 0; font-size: 15px; color: var(--ink); }
 
-.tabs { display: flex; gap: 8px; overflow-x: auto; margin: 16px 0 8px; padding-bottom: 4px; scrollbar-width: none; }
+.tabs { display: flex; gap: 8px; overflow-x: auto; margin: 18px 0 8px; padding-bottom: 4px; scrollbar-width: none; }
 .tabs::-webkit-scrollbar { display: none; }
 .tabs button {
   white-space: nowrap; border: 0; background: var(--card);
-  color: var(--muted); border-radius: 12px; padding: 10px 16px;
+  color: var(--muted); border-radius: 14px; padding: 10px 16px;
   font-weight: 700; font-size: 13px; border: 1px solid var(--line);
   transition: all 0.2s;
 }
-.tabs button.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+.tabs button.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3); }
 
-.section-title { font-size: 15px; font-weight: 800; color: var(--muted); margin: 20px 4px 10px; display: flex; justify-content: space-between; align-items: center; }
+.section-title { font-size: 14px; font-weight: 800; color: var(--muted); margin: 22px 4px 10px; display: flex; justify-content: space-between; align-items: center; }
 
 /* Cards */
 .card {
   background: var(--card); border: 1px solid var(--line);
   border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.02); transition: transform 0.2s;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.02); transition: transform 0.2s;
 }
+.paid { border-right: 5px solid var(--green); }
+.unpaid { border-right: 5px solid var(--red); }
+
 .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
-.card-title { font-size: 16px; font-weight: 800; line-height: 1.3; }
+.card-title { font-size: 16px; font-weight: 800; line-height: 1.3; color: var(--ink); }
 .card-date { color: var(--muted); font-size: 12px; margin-top: 6px; display: flex; align-items: center; gap: 4px; }
-.card-notes { font-size: 13px; color: #475569; margin-top: 10px; background: #f8fafc; padding: 8px 12px; border-radius: 10px; }
+.card-notes { font-size: 13px; color: #475569; margin-top: 10px; background: #f1f5f9; padding: 8px 12px; border-radius: 10px; }
 
 .badge { font-size: 11px; font-weight: 800; padding: 6px 12px; border-radius: 20px; white-space: nowrap; }
-.paid .badge { background: var(--green-bg); color: var(--green); }
-.unpaid .badge { background: var(--red-bg); color: var(--red); }
+.paid .badge { background: var(--green-bg); color: var(--green); border: 1px solid var(--green-border); }
+.unpaid .badge { background: var(--red-bg); color: var(--red); border: 1px solid var(--red-border); }
 
 .actions { display: flex; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--line); }
 .actions button {
@@ -130,16 +141,16 @@ body {
   position: fixed; bottom: calc(20px + env(safe-area-inset-bottom));
   left: 50%; transform: translateX(-50%);
   width: calc(min(500px, 100vw) - 32px); height: 54px;
-  border: 0; border-radius: 18px; background: var(--blue-gradient);
+  border: 0; border-radius: 18px; background: var(--gradient-accent);
   color: #fff; font-weight: 800; font-size: 16px;
-  box-shadow: 0 10px 25px rgba(11, 92, 255, 0.4);
+  box-shadow: 0 10px 25px rgba(168, 85, 247, 0.4);
   display: flex; align-items: center; justify-content: center; gap: 8px; z-index: 5;
 }
 .fab:active { transform: translateX(-50%) scale(0.98); }
 
 /* Bottom Sheet Modal */
 .sheet {
-  position: fixed; inset: 0; background: rgba(0,0,0,0.5);
+  position: fixed; inset: 0; background: rgba(15, 23, 42, 0.5);
   backdrop-filter: blur(4px); display: none; align-items: flex-end; z-index: 10;
 }
 .sheet.show { display: flex; }
@@ -151,16 +162,16 @@ body {
 @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
 .grab { width: 36px; height: 5px; background: #cbd5e1; border-radius: 10px; margin: 0 auto 16px; }
-.panel h2 { margin: 0 0 18px; font-size: 20px; font-weight: 800; }
+.panel h2 { margin: 0 0 18px; font-size: 20px; font-weight: 800; color: var(--ink); }
 .field { margin-bottom: 14px; }
 .field label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; }
 .field input, .field select, .field textarea {
   width: 100%; padding: 14px; border: 1px solid var(--line);
-  border-radius: 14px; background: #f8fafc; font: inherit; outline: 0;
+  border-radius: 14px; background: #f8fafc; font: inherit; outline: 0; color: var(--ink);
 }
 .field textarea { resize: none; height: 70px; }
 
-.save { width: 100%; border: 0; border-radius: 14px; padding: 15px; background: var(--blue-gradient); color: #fff; font-weight: 800; margin-top: 6px; }
+.save { width: 100%; border: 0; border-radius: 14px; padding: 15px; background: var(--gradient-main); color: #fff; font-weight: 800; margin-top: 6px; box-shadow: 0 4px 14px rgba(99, 102, 241, 0.3); }
 .cancel { width: 100%; border: 0; background: transparent; border-radius: 14px; padding: 12px; margin-top: 4px; color: var(--muted); font-weight: 700; }
 
 .empty { text-align: center; padding: 50px 20px; color: var(--muted); }
